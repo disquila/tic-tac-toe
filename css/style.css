@@ -1,23 +1,10 @@
-.modal-dialog {
-    z-index: 30;
-}
-
-.overlay {
-    opacity: 1;
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .7);
-    z-index: 20;
-    transition: .3s all;
-  }
-
 .table {
     border-collapse: collapse;
     width: auto;
+}
+
+.no-click {
+    pointer-events: none;
 }
 
 .small {
