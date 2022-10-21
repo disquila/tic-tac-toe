@@ -16,15 +16,21 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Настройки игры</h5>
+                    <h3 class="modal-title">Настройки игры</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <label> Введите размер поля <input type="text" name="size" class="size"></label>
-                    <label> Введите условия победы <input type="text" name="win-line" class="win-line"></label>
+                    <div class="row mb-3">
+                        <label class="col-sm-6 col-form-label">Введите размер поля</label>
+                        <div class="col-sm-6"><input type="text" name="size" class="size form-control"></div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-6 col-form-label">Введите условия победы</label>
+                        <div class="col-sm-6"><input type="text" name="win-line" class="win-line form-control"></div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Играть</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">ИГРАТЬ</button>
                 </div>
             </div>
         </div>
@@ -34,7 +40,6 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <!-- <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5> -->
                     <button type="button" class="btn-close" data-bs-target="#exampleModalToggle" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -42,7 +47,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
-                        data-bs-dismiss="modal">Начать заново</button>
+                        data-bs-dismiss="modal">НАЧАТЬ ЗАНОВО</button>
                 </div>
             </div>
         </div>

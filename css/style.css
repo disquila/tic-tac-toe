@@ -1,10 +1,7 @@
 .table {
     border-collapse: collapse;
     width: auto;
-}
-
-.no-click {
-    pointer-events: none;
+    margin: 16px;
 }
 
 .small {

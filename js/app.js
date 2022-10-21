@@ -64,7 +64,7 @@ function clickListen() {
             const modalRst = new bootstrap.Modal(restart);
             document.querySelector('.winner').innerHTML = '';
             modalRst.show();
-            document.querySelector('.winner').insertAdjacentHTML('afterbegin', `<p>Победил ${event.srcElement.innerText}</p>`);
+            document.querySelector('.winner').insertAdjacentHTML('afterbegin', `<p class="text-center fs-3">Победил ${event.srcElement.innerText}</p>`);
         };
         function isWin() {
             let winX = 0,
