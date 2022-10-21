@@ -1,6 +1,5 @@
 const elemModal = document.querySelector('.modal');
 const restart = document.querySelector('#exampleModalToggle2');
-const winner = document.querySelector('.winner');
 const table = document.querySelector('table');
 const gameBtn = document.querySelector('.btn-success').addEventListener('click', begin);
 
@@ -10,19 +9,19 @@ let win = 0;
 
 let whoseTurn = 1;
 
-let arr = []
+let arr = [];
 
 window.addEventListener('load', () => {
     const modal = new bootstrap.Modal(elemModal);
-    modal.show()
+    modal.show();
 });
 
 function createArr() {
     arr = new Array(size);
-    for (i = 0; i < size; i++) {
+    for (let i = 0; i < size; i++) {
         arr[i] = new Array(size);
     }
-    return arr
+    return arr;
 }
 
 function begin() {
@@ -35,8 +34,8 @@ function begin() {
 function fillTable(table, arr) {
     table.innerHTML = '';
     for (j = 0; j < arr.length; j++) {
-        const tr = table.insertRow()
-        for (k = 0; k < arr[j].length; k++) {
+        const tr = table.insertRow();
+        for (let k = 0; k < arr[j].length; k++) {
             const td = tr.insertCell();
             if (size < 4) {
                 td.classList.add('small');
@@ -46,86 +45,85 @@ function fillTable(table, arr) {
             }
             else if (size > 6) {
                 td.classList.add('large');
-            }
-            arr[j][k] = ''
-            td.innerHTML = arr[j][k]
+            };
+            arr[j][k] = '';
+            td.innerHTML = arr[j][k];
         };
     };
 };
 
 function clickListen() {
-    const cells = document.querySelectorAll('td')
+    const cells = document.querySelectorAll('td');
 
     for (m = 0; m < cells.length; m++) {
-        cells[m].addEventListener('click', handleClick)
-    }
+        cells[m].addEventListener('click', handleClick);
+    };
 
     function handleClick(event) {
+        function winner() {
+            const modalRst = new bootstrap.Modal(restart);
+            document.querySelector('.winner').innerHTML = '';
+            modalRst.show();
+            document.querySelector('.winner').insertAdjacentHTML('afterbegin', `<p>Победил ${event.srcElement.innerText}</p>`);
+        };
         function isWin() {
             let winX = 0,
                 winO = 0;
-            const modalRst = new bootstrap.Modal(restart);
             // по горизонтали
-            for (let n = -4; n < 5; n++) {
+            for (let n = -(win - 1); n < 5; n++) {
                 if (arr[event.target.parentNode.rowIndex][event.target.cellIndex + n] == 1) {
                     winX++
                 };
                 if (arr[event.target.parentNode.rowIndex][event.target.cellIndex + n] == -1) {
                     winO++
                 };
-            }
+            };
             if (winX == win || winO == win) {
-                modalRst.show()
-                table.classList.add('no-click')
-                winner.insertAdjacentHTML('afterbegin', `<p>Победил ${event.srcElement.innerText}</p>`);
+                winner();
             } else { winX = 0, winO = 0 };
 
             // по вертикали
-            for (let o = -4; o < 5; o++) {
+            for (let o = -(win - 1); o < 5; o++) {
                 if (arr[event.target.parentNode.rowIndex + o]) {
                     if (arr[event.target.parentNode.rowIndex + o][event.target.cellIndex] == 1) {
                         winX++
-                    }
+                    };
                     if (arr[event.target.parentNode.rowIndex + o][event.target.cellIndex] == -1) {
                         winO++
-                    }
-                }
-            }
+                    };
+                };
+            };
             if (winX == win || winO == win) {
-                modalRst.show()
-                table.classList.add('no-click')
-                winner.insertAdjacentHTML('afterbegin', `<p>Победил ${event.srcElement.innerText}</p>`);
+                winner();
             } else { winX = 0, winO = 0 };
 
             // по диагонали
-            for (let p = -4; p < 5; p++) {
+            for (let p = -(win - 1); p < 5; p++) {
                 if (arr[event.target.parentNode.rowIndex + p]) {
                     if (arr[event.target.parentNode.rowIndex + p][event.target.cellIndex + p] == 1
                         || arr[event.target.parentNode.rowIndex + p][event.target.cellIndex - p] == 1) {
                         winX++
-                    }
+                    };
                     if (arr[event.target.parentNode.rowIndex + p][event.target.cellIndex + p] == -1
                         || arr[event.target.parentNode.rowIndex + p][event.target.cellIndex - p] == -1) {
                         winO++
-                    }
-                }
-            }
+                    };
+                };
+            };
             if (winX == win || winO == win) {
-                modalRst.show()
-                table.classList.add('no-click')
-                winner.insertAdjacentHTML('afterbegin', `<p>Победил ${event.srcElement.innerText}</p>`);
+                winner();
             } else { winX = 0, winO = 0 };
-        }
+        };
         if (whoseTurn === 1) {
             event.target.innerHTML = '<p class="text-td cross">X</p>';
             arr[event.target.parentNode.rowIndex][event.target.cellIndex] = 1;
             whoseTurn = -1;
-            isWin()
+            isWin();
         } else {
-            event.target.innerHTML = '<p class="text-td zero">O</p>'
-            arr[event.target.parentNode.rowIndex][event.target.cellIndex] = -1
+            event.target.innerHTML = '<p class="text-td zero">O</p>';
+            arr[event.target.parentNode.rowIndex][event.target.cellIndex] = -1;
             whoseTurn = 1;
-            isWin()
+            isWin();
         };
-    }
-}
+    };
+};
