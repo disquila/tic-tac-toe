@@ -61,6 +61,7 @@ function clickListen() {
 
     function handleClick(event) {
         function winner() {
+            whoseTurn = 1;
             const modalRst = new bootstrap.Modal(restart);
             document.querySelector('.winner').innerHTML = '';
             modalRst.show();
